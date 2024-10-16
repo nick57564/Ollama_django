@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    background-color: #1B1B1B;
+    color: #083461;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    background-image:
+    url("/static/IM/bg.png"),
+    repeating-linear-gradient(
+        to right, transparent 0 0px, #083461 100% 100%
+    );
+    background-size: 130%;
+  }
+  
+  #chat-history {
+    height: 400px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10%;
+    margin-bottom: 1%;
+    margin-left: 33%;
+    margin-right: 33%;
+  }
+  
+  #chat-history p {
+    margin: 0;
+    padding: 5px;
+  }
+  
+  #chat-history p strong {
+    display: block;
+    margin-bottom: 2px;
+    color: #333;
+  }
+  
+  #chat-history p {
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  #chat-history p:has(strong:contains('User:')) {
+    background-color: #e1f5fe;
+    text-align: left;
+  }
+  
+  #chat-history p:has(strong:contains('AI:')) {
+    background-color: #e8f5e9;
+    text-align: left;
+  }
+  
+  #chat-form {
+    display: flex;
+    gap: 10px;
+    margin-left: 33%;
+    margin-right: 33%;
+  }
+  
+  #user-input {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); 
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; 
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

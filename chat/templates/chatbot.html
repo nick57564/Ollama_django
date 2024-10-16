@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Django Chat App</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#chat-form").submit(function (event) {
+          event.preventDefault();
+          var userInput = $("#user-input").val();
+          $("#user-input").val("");
+          $("#chat-history").append(
+            "<p><strong>User:</strong></p><p>" + userInput + "</p>"
+          );
+
+          var aiResponseElement = $("<p>");
+
+          var aiImage = $("<img>")
+            .attr("src", "https://img.utdstc.com/icon/6f9/ee0/6f9ee044146aecfd841c98f2a270d996b3e33440142456b9b4349c8bc681857c:200")
+            .css({
+              width: "40px", 
+              height: "40px",
+              marginRight: "5px",
+              verticalAlign: "middle" 
+            });
+
+          var aiLabel = $("<p>").append(aiImage).append($("<strong>").text("Ollama:"));
+          $("#chat-history").append(aiLabel); 
+
+          $("#chat-history").append(aiResponseElement); 
+
+          $.ajax({
+            type: "POST",
+            url: "/",
+            data: { user_input: userInput },
+            xhrFields: {
+              onprogress: function (xhr) {
+                var response = xhr.target.responseText;
+                aiResponseElement.html(function (i, oldHtml) {
+                  return response;
+                });
+              },
+            },
+          });
+        });
+      });
+    </script>
+    <link rel="stylesheet" href="{% static 'CS/style.css' %}" />
+  </head>
+  <body>
+    <div id="chat-history"></div>
+    <form id="chat-form">
+      <input type="text" id="user-input" name="user_input" required />
+      <button type="submit">Send</button>
+    </form>
+  </body>
+</html>
+
